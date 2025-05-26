@@ -8,6 +8,29 @@ func Example_main() {
 	// Hello world
 }
 
+func TestGreet(t *testing.T) {
+	type testCase struct {
+		lang language
+		want string
+	}
+
+	var tests = map[string]testCase{
+		"English":               {lang: "en", want: "Hello world"},
+		"French":                {lang: "fr", want: "Bonjour le monde"},
+		"Empty":                 {lang: "", want: "Language not supported : \"\""},
+		"Spanish not supported": {lang: "es", want: "Language not supported"},
+	}
+
+	for name, test := range tests {
+		t.Run(name, func(t *testing.T) {
+			greeting := greet(test.lang)
+			if greeting != test.want {
+				t.Errorf("Expected %s, got %s", test.want, greeting)
+			}
+		})
+	}
+}
+
 func TestGreet_English(t *testing.T) {
 	lang := language("en")
 	expected := "Hello world"
