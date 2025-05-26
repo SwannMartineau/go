@@ -12,20 +12,20 @@ type Repository struct {
 	Persons []Person
 }
 
-func ListRepository(ps []Person) []Person {
-	if len(ps) == 0 {
+func ListRepository(persons []Person) []Person {
+	if len(persons) == 0 {
 		fmt.Println("Aucune personne dans la liste.")
-		return ps
+		return persons
 	}
-	if len(ps) == 1 {
+	if len(persons) == 1 {
 		fmt.Println("Une seule personne dans la liste.")
 	} else {
 		fmt.Println("Liste des personnes :")
 	}
-	for _, p := range ps {
-		fmt.Printf("Nom: %s, Prénom: %s, Téléphone: %s\n", p.Name, p.FirstName, p.PhoneNumber)
+	for _, person := range persons {
+		fmt.Printf("Nom: %s, prénom: %s, Téléphone: %s\n", person.Name, person.FirstName, person.PhoneNumber)
 	}
-	return ps
+	return persons
 }
 
 func AddPerson(persons []Person, person Person) []Person {
@@ -39,6 +39,13 @@ func AddPerson(persons []Person, person Person) []Person {
 }
 
 func DeletePerson(persons []Person, person Person) []Person {
+	for i, p := range persons {
+		if p.Name == person.Name && p.FirstName == person.FirstName && p.PhoneNumber == person.PhoneNumber {
+			//Slice jusqu'à l'index i (exclu) et prendre i+1 et spread le reste en arguments individuels
+			persons = append(persons[:i], persons[i+1:]...)
+			return persons
+		}
+	}
 	return persons
 }
 
