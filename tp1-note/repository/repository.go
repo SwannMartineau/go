@@ -49,7 +49,19 @@ func DeletePerson(persons []Person, person Person) []Person {
 	return persons
 }
 
-func ModifyPerson(persons []Person, person Person) []Person {
+func ModifyPerson(persons []Person, lastName string, firstName string, phoneNumber string) []Person {
+	found := false
+	for i, p := range persons {
+		if p.Name == lastName && p.FirstName == firstName {
+			persons[i].PhoneNumber = phoneNumber
+			found = true
+		}
+	}
+	if !found {
+		fmt.Println("Cette personne n'existe pas")
+	} else {
+		fmt.Printf("Le numéro de téléphone de %s %s a été modifié\n", firstName, lastName)
+	}
 	return persons
 }
 

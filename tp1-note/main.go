@@ -37,4 +37,7 @@ func main() {
 
 	repository.ListRepository(persons2)
 
+	persons = repository.ModifyPerson(persons, person1.Name, person1.FirstName, "66666666")
+
+	repository.ListRepository(persons)
 }
