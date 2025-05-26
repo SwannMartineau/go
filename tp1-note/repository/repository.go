@@ -66,5 +66,12 @@ func ModifyPerson(persons []Person, lastName string, firstName string, phoneNumb
 }
 
 func SearchPerson(persons []Person, person Person) []Person {
+	for i, p := range persons {
+		if p.Name == person.Name && p.FirstName == person.FirstName && p.PhoneNumber == person.PhoneNumber {
+			fmt.Printf("Personne trouvé à l'index %d ! Nom: %s, prénom: %s, Téléphone: %s\n", i, p.Name, p.FirstName, p.PhoneNumber)
+			return persons
+		}
+	}
+	fmt.Println("Cette personne n'existe pas.")
 	return persons
 }

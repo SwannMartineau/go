@@ -40,4 +40,8 @@ func main() {
 	persons = repository.ModifyPerson(persons, person1.Name, person1.FirstName, "66666666")
 
 	repository.ListRepository(persons)
+
+	repository.SearchPerson(persons, person2)
+
+	repository.SearchPerson(persons, person1)
 }
