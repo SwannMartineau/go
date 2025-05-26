@@ -44,7 +44,7 @@ func TestGreet_English(t *testing.T) {
 		t.Errorf("Expected %q, got %q", expected, greeting)
 	}
 	if err != nil {
-		t.Errorf("Expected no error, got %v", err)
+		t.Errorf("Expected error, got %v", err)
 	}
 }
 
@@ -56,7 +56,7 @@ func TestGreet_French(t *testing.T) {
 		t.Errorf("Expected %q, got %q", expected, greeting)
 	}
 	if err != nil {
-		t.Errorf("Expected no error, got %v", err)
+		t.Errorf("Expected error, got %v", err)
 	}
 }
 
@@ -68,6 +68,6 @@ func TestGreet_Spanish(t *testing.T) {
 		t.Errorf("Expected %q, got %q", expected, greeting)
 	}
 	if err != nil {
-		t.Errorf("Expected no error for Spanish, got %v", err)
+		t.Errorf("Expected error for Spanish, got %v", err)
 	}
 }
