@@ -24,4 +24,12 @@ func main() {
 	persons2 := []repository.Person{}
 
 	repository.ListRepository(persons2)
+
+	persons2 = repository.AddPerson(persons2, person1)
+
+	repository.ListRepository(persons2)
+
+	persons2 = repository.AddPerson(persons2, person1)
+
+	repository.ListRepository(persons2)
 }
