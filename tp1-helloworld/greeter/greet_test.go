@@ -7,13 +7,12 @@ func TestGreet(t *testing.T) {
 		lang        Language
 		want        string
 		expectError bool
-		errValue    string
 	}
 
 	var tests = map[string]testCase{
 		"English": {lang: "en", want: "Hello world"},
 		"French":  {lang: "fr", want: "Bonjour le monde"},
-		"Empty":   {lang: "", want: "", expectError: true, errValue: ""},
+		"Empty":   {lang: "", want: "", expectError: true},
 		"Spanish": {lang: "es", want: "Language not supported"},
 	}
 
@@ -27,7 +26,7 @@ func TestGreet(t *testing.T) {
 				}
 			} else {
 				if err != nil {
-					t.Errorf("Expected no error for language %q, got: %v", test.lang, err)
+					t.Errorf("Expected error for language %q, got: %v", test.lang, err)
 				}
 				if greeting != test.want {
 					t.Errorf("Expected greeting %q, got %q", test.want, greeting)
